@@ -3,6 +3,7 @@
 ## type hints
 
 Evolution of Python Typing
+
 - Python 3.5 (2015): Introduced type hints via `typing` module [PEP 484].
 - Python 3.9 (2020): Added native type hints for collections (e.g., `list[str]`) [PEP 585].
 - Python 3.10 (2021): Added writing union types as `X | Y` [PEP 604].
@@ -11,6 +12,7 @@ Evolution of Python Typing
 - Python 3.13 (2024): Introduced annotating type forms `TypeForm` [PEP 747]
 
 Since python 3.9:
+
 - List -> list
 - Dict -> dict
 - Tuple -> tuple
