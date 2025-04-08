@@ -203,7 +203,25 @@ nums.sort(reverse=True)  # [5, 4, 3, 2, 1]
 
 ## counter
 
+```python
+from collections import Counter
+
+nums = [1, 2, 3, 4, 5, 1, 2, 3]
+counter = Counter(nums)
+print(counter)  # Counter({1: 2, 2: 2, 3: 2, 4: 1, 5: 1})
+```
+
 ## set
+
+```python
+nums = [1, 2, 3, 4, 5]
+
+# using set
+unique_nums = set(nums)  # {1, 2, 3, 4, 5}
+
+# or using list(dict.fromkeys)
+unique_nums = list(dict.fromkeys(nums))  # [1, 2, 3, 4, 5]
+```
 
 ## deque
 
@@ -211,14 +229,40 @@ nums.sort(reverse=True)  # [5, 4, 3, 2, 1]
 
 ## bisect
 
+The module provides support for maintaining a list in sorted order without having to sort the list after each insertion.
+
+There are two main functions in the bisect module:
+- `bisect_left`: Find the index where to insert an element to keep the list sorted.
+- `bisect_right`: Find the index where to insert an element to keep the list sorted, but if the element is already present, it will be inserted to the right of the existing elements.
+
 ## heapq
+
+The module provides an implementation of the heap queue algorithm, also known as the priority queue algorithm.
+- `heapify`: Transform a list into a heap, in-place, in linear time.
+- `heappush`: Push the value item onto the heap, maintaining the heap invariant.
+- `heappop`: Pop and return the smallest item from the heap, maintaining the heap invariant.
 
 # Miscellaneous
 
-## `If (not) ___`
+## `If (not) _`
+
+```python
+# check if list is empty
+if len(nums) == 0:
+    print("List is empty")
+
+# or
+if not nums:
+    print("List is empty")
+```
 
 ## Multiplying `strings`/`lists`
 
 ## In-line If/Else statements
 
 ## `@cache`, `@lru_cache`
+
+## `float('inf')`, `math.inf`
+
+`float('inf')` is the same as `math.inf`, meaning positive infinity.
+`float('-inf')` is the same as `-math.inf`, meaning negative infinity.
