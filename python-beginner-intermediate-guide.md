@@ -96,7 +96,7 @@ for num1, num2 in zip(list1, list2):
 
 ## `all`
 
-all returns True if all elements of the iterable are true (or if the iterable is empty).
+`all` returns True if all elements of the iterable are true (or if the iterable is empty).
 
 ```python
 # using all
@@ -111,7 +111,7 @@ return all(num < value for num in nums)
 
 ## `any`
 
-any returns True if any element of the iterable is true. If the iterable is empty, return False.
+`any` returns True if any element of the iterable is true. If the iterable is empty, return False.
 
 ```python
 # using any
@@ -126,15 +126,76 @@ return any(num >= value for num in nums)
 
 ## `sorted`
 
+`sorted` is a built-in function that returns a new sorted list from the elements of any iterable.
+
+```python
+nums = [5, 2, 3, 1, 4]
+# using sorted
+sorted_nums = sorted(nums)  # [1, 2, 3, 4, 5]
+# or using sort
+nums.sort()  # [1, 2, 3, 4, 5]
+```
+
+The difference between `sorted(iterable)` and `sort()` is that `sorted()` returns a new list,
+while `sort()` modifies the list in place and returns `None`.
+
 ## `bin`
+
+`bin` converts an integer number to a binary string prefixed with "0b".
+
+```python
+num = 5
+print(bin(num))  # 0b101
+
+# and converts it back to an integer using `int`
+print(int(bin(num), 2))  # 5
+```
 
 ## `map`
 
+`map(function, iterable)` applies the function to all items in the iterable and returns a map object (which is an iterator).
+
+```python
+nums = [1, 2, 3, 4, 5]
+# using map
+squared_nums = list(map(lambda x: x ** 2, nums))  # [1, 4, 9, 16, 25]
+```
+
 ## `reduce`
+
+`reduce(function, iterable)` applies the function cumulatively to the items of the iterable, from left to right, so as to reduce the iterable to a single value.
+
+```python
+from functools import reduce
+
+def add(x, y):
+    return x + y
+reduce (add, [1, 2, 3, 4, 5])  # 15
+# which calcuates as (((1 + 2) + 3) + 4) + 5
+```
 
 ## `filter`
 
+`filter(function, iterable)` constructs an iterator from those elements of iterable for which function returns true.
+
+```python
+nums = [1, 2, 3, 4, 5]
+# using filter
+even_nums = list(filter(lambda x: x % 2 == 0, nums))  # [2, 4]
+```
+
 ## `reversed`
+
+`reversed` returns a reverse iterator. The original iterable is not modified.
+
+```python
+nums = [1, 2, 3, 4, 5]
+# using reversed
+reversed_nums = list(reversed(nums))  # [5, 4, 3, 2, 1]
+
+# or using sort
+nums.sort(reverse=True)  # [5, 4, 3, 2, 1]
+```
 
 # Data Structures
 
