@@ -6,6 +6,7 @@ docs_dir: "."
 nav:
   - Home: README.md
   - Python Beginner/Intermediate Guide: python-beginner-intermediate-guide.md
+  - Templates: templates.md
 plugins:
   - mermaid2:
       version: 11.5.0
