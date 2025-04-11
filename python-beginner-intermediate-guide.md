@@ -260,7 +260,36 @@ if not nums:
 
 ### In-line If/Else statements
 
-### `@cache`, `@lru_cache`
+### `@lru_cache`, `@cache`
+
+`@lru_cache` caches the result of function calls up to a certain size (`maxsize`).
+When the cache reaches this limit, the least recently used entries are discarded.
+Setting `maxisize=None` makes the cache unbounded.
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fibonacci(n):
+    if n < 2:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(10))  # 55
+```
+
+With python 3.9+, you can use `@cache` instead of `@lru_cache(maxsize=None)`.
+
+```python
+from functools import cache
+@cache
+def fibonacci(n):
+    if n < 2:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(10))  # 55
+```
 
 ### `float('inf')`, `math.inf`
 
