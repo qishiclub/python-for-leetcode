@@ -94,7 +94,7 @@ print(append_to_list(3, [4, 5]))  # [4, 5, 3]
 
 ## Sorting
 
-- Python's built-in sorting (sorted() and list.sort()) is a stable sort, and sorts lexicographically by default.
+- Python's built-in sorting (sorted() and list.sort()) is a stable sort, and sorts lexicographically by default (using unicode value via `ord()`).
 - For tuple sorting, the first element is compared first, then the second, and so on.
 
 ```python
