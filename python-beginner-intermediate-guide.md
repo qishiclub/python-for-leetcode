@@ -232,12 +232,14 @@ unique_nums = list(dict.fromkeys(nums))  # [1, 2, 3, 4, 5]
 The module provides support for maintaining a list in sorted order without having to sort the list after each insertion.
 
 There are two main functions in the bisect module:
+
 - `bisect_left`: Find the index where to insert an element to keep the list sorted.
 - `bisect_right`: Find the index where to insert an element to keep the list sorted, but if the element is already present, it will be inserted to the right of the existing elements.
 
 ### heapq
 
 The module provides an implementation of the heap queue algorithm, also known as the priority queue algorithm.
+
 - `heapify`: Transform a list into a heap, in-place, in linear time.
 - `heappush`: Push the value item onto the heap, maintaining the heap invariant.
 - `heappop`: Pop and return the smallest item from the heap, maintaining the heap invariant.
@@ -282,6 +284,7 @@ With python 3.9+, you can use `@cache` instead of `@lru_cache(maxsize=None)`.
 
 ```python
 from functools import cache
+
 @cache
 def fibonacci(n):
     if n < 2:

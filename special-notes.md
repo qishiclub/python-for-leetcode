@@ -3,6 +3,7 @@
 ## Python variable scope
 
 `nonlocal` and `global` keywords are used to declare variables in a different scope.
+
 - `nonlocal` is used to declare a variable in the nearest enclosing scope that is not global.
 - `global` is used to declare a variable in the global scope.
 
@@ -106,12 +107,14 @@ print(sorted_data)  # [(1, 'apple'), (1, 'orange'), (2, 'banana')]
 ## Tuple vs List in leetcode
 
 Tuples:
+
 - Immutable, cannot be changed after creation.
 - Hashable, can be used as dictionary keys.
 - Faster than lists for iteration and access.
 - Typically represent fixed collections of heterogeneous data or pairs, coordinates, etc.
 
 Lists:
+
 - Mutable, can be changed after creation.
 - Not hashable, cannot be used as dictionary keys.
 - Slower than tuples for iteration and access.
