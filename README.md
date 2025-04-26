@@ -162,3 +162,44 @@ When assign multiple variables to the same value, you can do it in one line:
 ```python
 a = b = c = 0
 ```
+
+## `match` syntax
+
+Since python 3.10, you can use `match` syntax to match patterns in data structures (this is what is used in `match` in other languages):
+
+```python
+def process(data):
+    match data:
+        case int(value):
+            print(f"Integer: {value}")
+        case str(value):
+            print(f"String: {value}")
+        case list():
+            print("List: {data}")
+        case dict():
+            print("Dictionary: {data}")
+        case _:
+            print("Unknown type")
+process(42)  # Integer: 42
+process("hello")  # String: hello
+process([1, 2, 3])  # List: [1, 2, 3]
+process({"key": "value"})  # Dictionary: {'key': 'value'}
+process({1, 2, 3})  # Unknown type
+process(None)  # Unknown type
+```
+
+Or you can match exact values:
+
+```python
+def process(data):
+    match data:
+        case 1:
+            print("One")
+        case 2:
+            print("Two")
+        case _:
+            print("Other")
+process(1)  # One
+process(2)  # Two
+process(3)  # Other
+```
