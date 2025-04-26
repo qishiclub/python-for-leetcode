@@ -74,7 +74,7 @@ print(deep_copied)  # [1, 2, [88, 4]]
 
 ```python
 def append_to_list(value, my_list=None):
-    if my_list is None:
+    if my_list is None:  # NOTE, you need to directly compare with None
         my_list = []
     my_list.append(value)
     return my_list
