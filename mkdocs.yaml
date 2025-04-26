@@ -6,6 +6,7 @@ docs_dir: "."
 nav:
   - Home: README.md
   - Python Beginner/Intermediate Guide: python-beginner-intermediate-guide.md
+  - Data Structure Complexities : data-structure-complexities.md
   - Time Complexity Estimation: time-complexity-estimation.md
   - Special Notes: special-notes.md
 
