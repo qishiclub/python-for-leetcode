@@ -154,3 +154,11 @@ if 1 < 2 < 3:
 # tuple comparison
 if ('a', 3) < ('b', 2) < ('c', 1):
 ```
+
+## Multiple assignment
+
+When assign multiple variables to the same value, you can do it in one line:
+
+```python
+a = b = c = 0
+```
