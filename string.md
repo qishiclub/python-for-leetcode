@@ -184,3 +184,13 @@ len('hello')  # 5
 ord('A')  # 65
 chr(65)  # 'A'
 ```
+
+### `eval()`
+
+eval() evaluates a string as a Python expression and returns the result. It can be dangerous if used with untrusted input.
+
+```python
+result = eval('2 + 3 * 4')  # 14
+result = eval('x + y', {'x': 1, 'y': 2})  # 3
+result = eval('x + 2'.replace('x', '2'))  # 4
+```
