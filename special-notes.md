@@ -5,7 +5,7 @@
 `nonlocal` and `global` keywords are used to declare variables in a different scope.
 
 - `nonlocal` is used to declare a variable in the nearest enclosing scope that is not global.
-- `global` is used to declare a variable in the global scope.
+- `global` is used to declare a variable in the global scope (which is module level).
 
 ### Example of `nonlocal` keyword
 
