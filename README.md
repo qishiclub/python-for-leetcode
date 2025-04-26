@@ -89,6 +89,14 @@ def distance(x, y):
 print(distance(*point))  # 5.0
 ```
 
+### use `_` to ignore values
+
+```python
+point = (1, 2, 3)
+x, _, z = point
+print(f"x: {x}, z: {z}")  # x: 1, z: 3
+```
+
 ## Boolean as int
 
 ```python
