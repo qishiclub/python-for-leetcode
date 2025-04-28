@@ -10,6 +10,7 @@ nav:
   - Data Structure Complexities : data-structure-complexities.md
   - Time Complexity Estimation: time-complexity-estimation.md
   - Special Notes: special-notes.md
+  - Concurrency: concurrency.md
 
 plugins:
   - mermaid2:
