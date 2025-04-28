@@ -309,12 +309,10 @@ print("All threads have passed the barrier.")
 | Condition | Conditional waiting        | `wait()`, `notify()`, `notify_all()` |
 | Barrier   | Coordination among threads | `wait()`                             |
 
-```python
-
 ## Summary
 
 - Identify race conditions in code
-- Use `Lock and RLock` to protect shared resources
+- Use `Lock` and `RLock` to protect shared resources
 - Use `Semaphore` to limit concurrent access to resources
 - Leverage `Event` for signaling between threads
 - Use `Condition` for complex thread communication
