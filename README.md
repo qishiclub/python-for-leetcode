@@ -212,6 +212,34 @@ process(2)  # Two
 process(3)  # Other
 ```
 
+## Rounding issue for negative numbers
+
+```python
+print(5/2)  # 2.5
+print(5//2)  # 2
+print(-3//2)  # -2
+print(int(-3/2))  # -1
+```
+
+## mod issue for negative numbers
+
+```python
+print(5 % 2)  # 1
+print(-10 % 3)  # 2
+
+import math
+print(math.fmod(-10, 3))  # -1.0
+```
+
+## numbers never overflow
+
+python numbers are unbounded so they never overflow.
+
+```python
+print(math.pow(2, 200))
+print(math.pow(2, 200) < math.inf)  # True
+```
+
 ## Reference
 
 [NeetCode: Python for Coding Interviews](https://www.youtube.com/watch?v=0K_eZGS5NsU)
