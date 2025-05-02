@@ -236,7 +236,7 @@ print(math.fmod(-10, 3))  # -1.0
 python numbers are unbounded so they never overflow.
 
 ```python
-print(math.pow(2, 200))
+print(math.pow(2, 200)) # 1.6069380442589903e+60
 print(math.pow(2, 200) < math.inf)  # True
 ```
 
