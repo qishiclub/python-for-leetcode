@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Data Structure Complexities - python-for-leetcode</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Data Structure Complexities";
+        var mkdocs_page_input_path = "data-structure-complexities.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> python-for-leetcode
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../string/">String</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../python-beginner-intermediate-guide/">Python Beginner/Intermediate Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Data Structure Complexities</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#list-list">List list</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deque-collectionsdeque">Deque collections.deque</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#set-set">Set set</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dictionary-dict">Dictionary dict</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sortedcontainers-module">sortedcontainers module</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#heap-priorityqueue-heapq">Heap (PriorityQueue) (heapq)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tuple-tuple">Tuple tuple</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#common-pitfalls-to-keep-in-mind">Common Pitfalls to Keep in Mind:</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../time-complexity-estimation/">Time Complexity Estimation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../special-notes/">Special Notes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../concurrency/">Concurrency</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">python-for-leetcode</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Data Structure Complexities</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="data-structure-complexities">data structure complexities</h1>
+<h2 id="list-list">List <code>list</code></h2>
+<p>list is internally represented as a dynamic array. It allows for efficient random access and appending, but inserting or deleting elements at arbitrary positions can be costly due to the need to shift elements.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Average Case</th>
+<th>Worst Case</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index (list[i])</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>Direct access via index</td>
+</tr>
+<tr>
+<td>Append (append)</td>
+<td>O(1) amortized</td>
+<td>O(1) amortized</td>
+<td>Occasionally O(n) when resizing</td>
+</tr>
+<tr>
+<td>Insert/Delete (end)</td>
+<td>O(1) amortized</td>
+<td>O(1) amortized</td>
+<td>Append/pop at end</td>
+</tr>
+<tr>
+<td>Insert/Delete (front)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>Shifts subsequent elements</td>
+</tr>
+<tr>
+<td>Membership (x in l)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>Linear search</td>
+</tr>
+<tr>
+<td>Pop (pop)</td>
+<td>O(1) (end)</td>
+<td>O(n) (front)</td>
+<td>O(1) for pop(), O(n) for pop(i)</td>
+</tr>
+<tr>
+<td>Sort (sort())</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>Timsort</td>
+</tr>
+<tr>
+<td>Slice (list[a:b])</td>
+<td>O(b-a)</td>
+<td>O(b-a)</td>
+<td>Depends on slice length</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deque-collectionsdeque">Deque <code>collections.deque</code></h2>
+<p>deque is represented internally as a doubly linked list, allowing for efficient appends and pops from both ends. However, it does not support random access like lists.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Average Case</th>
+<th>Worst Case</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Append (append)</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>Efficient at both ends</td>
+</tr>
+<tr>
+<td>Pop (pop)</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>Efficient at both ends</td>
+</tr>
+<tr>
+<td>Append/Pop (front)</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>Efficient at both ends</td>
+</tr>
+<tr>
+<td>Index (deque[i])</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>No direct indexing (linear traversal)</td>
+</tr>
+<tr>
+<td>Membership (x in dq)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>Linear search</td>
+</tr>
+</tbody>
+</table>
+<h2 id="set-set">Set <code>set</code></h2>
+<p>set is implemented as a hash table, allowing for average O(1) time complexity for membership tests, insertions, and deletions. However, in the worst case, these operations can degrade to O(n) due to hash collisions.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Average Case</th>
+<th>Worst Case</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Membership (x in s)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>Rarely O(n) with hash collisions</td>
+</tr>
+<tr>
+<td>Insert/Delete (add/remove)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>Rarely O(n) with hash collisions</td>
+</tr>
+<tr>
+<td>Union/Intersection</td>
+<td>O(len(s1)+len(s2))</td>
+<td>O(len(s1)*len(s2))</td>
+<td>Intersection worst-case depends on hash</td>
+</tr>
+<tr>
+<td>Iteration (for x in s)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>Iterates through all elements</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dictionary-dict">Dictionary <code>dict</code></h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Average Case</th>
+<th>Worst Case</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lookup (d[key])</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>Rarely O(n) with hash collisions</td>
+</tr>
+<tr>
+<td>Insert/Delete</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>Rarely O(n) with hash collisions</td>
+</tr>
+<tr>
+<td>Membership (key in d)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>Rarely O(n) with hash collisions</td>
+</tr>
+<tr>
+<td>Iteration (for key in d)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>Iterates through all keys</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sortedcontainers-module">sortedcontainers module</h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Average Case</th>
+<th>Worst Case</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insert (add)</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+<td>e.g., SortedList, SortedDict</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+<td>Balanced binary-tree implementations</td>
+</tr>
+<tr>
+<td>Membership</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+<td>Efficient sorted structures</td>
+</tr>
+<tr>
+<td>Indexing (container[i])</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+<td>Efficient indexing</td>
+</tr>
+<tr>
+<td>Iteration (for x in c)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>Iterates through all elements</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heap-priorityqueue-heapq">Heap (PriorityQueue) (heapq)</h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Average Case</th>
+<th>Worst Case</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push (heappush)</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+<td>Maintains heap invariant</td>
+</tr>
+<tr>
+<td>Pop (heappop)</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+<td>Retrieves/removes smallest element</td>
+</tr>
+<tr>
+<td>Peek (heap[0])</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>Retrieves smallest without removal</td>
+</tr>
+<tr>
+<td>Heapify (heapify)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>Linear-time heap initialization</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tuple-tuple">Tuple <code>tuple</code></h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Average Case</th>
+<th>Worst Case</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Indexing (tuple[i])</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>Immutable; direct index</td>
+</tr>
+<tr>
+<td>Membership (x in t)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>Linear search</td>
+</tr>
+<tr>
+<td>Concatenation (t1 + t2)</td>
+<td>O(n+m)</td>
+<td>O(n+m)</td>
+<td>Creates a new tuple</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-pitfalls-to-keep-in-mind">Common Pitfalls to Keep in Mind:</h2>
+<ul>
+<li>List Insert/Delete: O(n) time if inserting/removing elements at front or middle (shifting required).</li>
+<li>Dict/Set worst-case: O(n) lookup due to hash collisions (rare but possible).</li>
+<li>Deque indexing: Not efficient (O(n)), use lists if random access is frequent.</li>
+<li>Sorted Containers: Use external libraries (sortedcontainers) for efficient sorted insertions/deletions/indexing (standard Python does not provide balanced binary search trees).</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../python-beginner-intermediate-guide/" class="btn btn-neutral float-left" title="Python Beginner/Intermediate Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../time-complexity-estimation/" class="btn btn-neutral float-right" title="Time Complexity Estimation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../python-beginner-intermediate-guide/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../time-complexity-estimation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

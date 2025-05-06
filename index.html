@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Python for LeetCode" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>python-for-leetcode</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> python-for-leetcode
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#type-hints">type hints</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#flatten-2d-array">flatten 2D array</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reverse-a-string">Reverse a string</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reverse-a-list-or-string">Reverse a list or string</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#array-index-trick-eg-palindrome-checking">Array index trick (e.g. Palindrome checking)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tuple-unpacking">Tuple unpacking</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#use-_-to-ignore-values">use _ to ignore values</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#boolean-as-int">Boolean as int</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#map">map</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reduce">reduce</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#defaultdict">defaultdict</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#swap-variables">swap variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chained-boolean-comparisons">chained boolean comparisons</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multiple-assignment">Multiple assignment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#match-syntax">match syntax</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rounding-issue-for-negative-numbers">Rounding issue for negative numbers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mod-issue-for-negative-numbers">mod issue for negative numbers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#numbers-never-overflow">numbers never overflow</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="string/">String</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="python-beginner-intermediate-guide/">Python Beginner/Intermediate Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="data-structure-complexities/">Data Structure Complexities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="time-complexity-estimation/">Time Complexity Estimation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="special-notes/">Special Notes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="concurrency/">Concurrency</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">python-for-leetcode</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="python-for-leetcode">python-for-leetcode</h1>
+<h2 id="type-hints">type hints</h2>
+<p>Evolution of Python Typing</p>
+<ul>
+<li>Python 3.5 (2015): Introduced type hints via <code>typing</code> module [PEP 484].</li>
+<li>Python 3.9 (2020): Added native type hints for collections (e.g., <code>list[str]</code>) [PEP 585].</li>
+<li>Python 3.10 (2021): Added writing union types as <code>X | Y</code> [PEP 604].</li>
+<li>Python 3.11 (2022): Added <code>Self</code> [PEP 673] and <code>TypeVarTuple</code> [PEP 646].</li>
+<li>Python 3.12 (2023): Introduced Override Decorator [PEP 698].</li>
+<li>Python 3.13 (2024): Introduced annotating type forms <code>TypeForm</code> [PEP 747]</li>
+</ul>
+<p>Since python 3.9:</p>
+<ul>
+<li>List -&gt; list</li>
+<li>Dict -&gt; dict</li>
+<li>Tuple -&gt; tuple</li>
+<li>Set -&gt; set</li>
+<li>Deque -&gt; collections.deque</li>
+<li>DefaultDict -&gt; collections.defaultdict</li>
+<li>Optional[T] -&gt; T | None</li>
+</ul>
+<h2 id="flatten-2d-array">flatten 2D array</h2>
+<pre><code class="language-python">a = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9]
+]
+
+flattened = [item for sublist in a for item in sublist]
+print(flattened)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# or
+print(sum(a, []))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<h2 id="reverse-a-string">Reverse a string</h2>
+<pre><code class="language-python">s = &quot;hello&quot;
+
+# Method 1: Using slicing
+reversed_s = s[::-1]
+print(reversed_s)  # &quot;olleh&quot;
+
+# Method 2: Using the `reversed()` function
+reversed_s = ''.join(reversed(s)) # NOTE `reversed()` returns an iterator
+print(reversed_s)  # &quot;olleh&quot;
+</code></pre>
+<h2 id="reverse-a-list-or-string">Reverse a list or string</h2>
+<pre><code class="language-python">str = &quot;abcde&quot;
+print(str[::-1])
+
+list = [1, 2, 3, 4, 5]
+print(list[::-1])
+</code></pre>
+<h2 id="array-index-trick-eg-palindrome-checking">Array index trick (e.g. Palindrome checking)</h2>
+<pre><code class="language-python">str = &quot;abcba&quot;
+n = len(str)
+print(all(str[i] == str[n-i-1] for i in range(n)))
+
+str = &quot;abcba&quot;
+print(all(str[i] == str[~i] for i in range(len(str)))) # ~i is -i-1, ~ is bitwise not
+</code></pre>
+<h2 id="tuple-unpacking">Tuple unpacking</h2>
+<pre><code class="language-python">point = (1, 2)
+x, y = point
+print(f&quot;x: {x}, y: {y}&quot;)  # x: 1, y: 2
+</code></pre>
+<p>or</p>
+<pre><code class="language-python">point = (3, 4)
+def distance(x, y):
+    return (x**2 + y**2)**0.5
+print(distance(*point))  # 5.0
+</code></pre>
+<h3 id="use-_-to-ignore-values">use <code>_</code> to ignore values</h3>
+<pre><code class="language-python">point = (1, 2, 3)
+x, _, z = point
+print(f&quot;x: {x}, z: {z}&quot;)  # x: 1, z: 3
+</code></pre>
+<h2 id="boolean-as-int">Boolean as int</h2>
+<pre><code class="language-python">nums = [4, 6, 8, 3, 5, 7]
+
+count = sum(n &gt; 5 for n in nums)  # count of numbers greater than 5
+print(count)  # 3
+</code></pre>
+<h2 id="map">map</h2>
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x**2, nums)) # NOTE: map returns an iterator, need to use list() to convert it to a list
+print(squared)  # [1, 4, 9, 16, 25]
+</code></pre>
+<h2 id="reduce">reduce</h2>
+<pre><code class="language-python">from functools import reduce
+from operator import add
+nums = [1, 2, 3, 4, 5]
+sum = reduce(add, nums)  # sum of all numbers
+print(sum)  # 15
+
+# or using lambda
+
+sum = reduce(lambda x, y: x + y, nums)  # sum of all numbers
+print(sum)  # 15
+</code></pre>
+<h2 id="defaultdict">defaultdict</h2>
+<pre><code class="language-python">from collections import defaultdict
+
+d = defaultdict(int)  # default value is 0
+d['a'] += 1
+print(d['a'])  # 1
+
+# you dont need `setdefault`, which is working with regular `{}`
+</code></pre>
+<h2 id="swap-variables">swap variables</h2>
+<pre><code class="language-python">a, b = b, a
+
+# or using `^`
+a = a ^ b
+b = a ^ b
+a = a ^ b
+</code></pre>
+<h2 id="chained-boolean-comparisons">chained boolean comparisons</h2>
+<pre><code class="language-python">if 'a' &lt; 'b' &lt; 'c':
+
+if 1 &lt; 2 &lt; 3:
+
+# tuple comparison
+if ('a', 3) &lt; ('b', 2) &lt; ('c', 1):
+</code></pre>
+<h2 id="multiple-assignment">Multiple assignment</h2>
+<p>When assign multiple variables to the same value, you can do it in one line:</p>
+<pre><code class="language-python">a = b = c = 0
+</code></pre>
+<h2 id="match-syntax"><code>match</code> syntax</h2>
+<p>Since python 3.10, you can use <code>match</code> syntax to match patterns in data structures (this is what is used in <code>match</code> in other languages):</p>
+<pre><code class="language-python">def process(data):
+    match data:
+        case int(value):
+            print(f&quot;Integer: {value}&quot;)
+        case str(value):
+            print(f&quot;String: {value}&quot;)
+        case list():
+            print(&quot;List: {data}&quot;)
+        case dict():
+            print(&quot;Dictionary: {data}&quot;)
+        case _:
+            print(&quot;Unknown type&quot;)
+process(42)  # Integer: 42
+process(&quot;hello&quot;)  # String: hello
+process([1, 2, 3])  # List: [1, 2, 3]
+process({&quot;key&quot;: &quot;value&quot;})  # Dictionary: {'key': 'value'}
+process({1, 2, 3})  # Unknown type
+process(None)  # Unknown type
+</code></pre>
+<p>Or you can match exact values:</p>
+<pre><code class="language-python">def process(data):
+    match data:
+        case 1:
+            print(&quot;One&quot;)
+        case 2:
+            print(&quot;Two&quot;)
+        case _:
+            print(&quot;Other&quot;)
+process(1)  # One
+process(2)  # Two
+process(3)  # Other
+</code></pre>
+<h2 id="rounding-issue-for-negative-numbers">Rounding issue for negative numbers</h2>
+<pre><code class="language-python">print(5/2)  # 2.5
+print(5//2)  # 2
+print(-3//2)  # -2
+print(int(-3/2))  # -1
+</code></pre>
+<h2 id="mod-issue-for-negative-numbers">mod issue for negative numbers</h2>
+<pre><code class="language-python">print(5 % 2)  # 1
+print(-10 % 3)  # 2
+
+import math
+print(math.fmod(-10, 3))  # -1.0
+</code></pre>
+<h2 id="numbers-never-overflow">numbers never overflow</h2>
+<p>python numbers are unbounded so they never overflow.</p>
+<pre><code class="language-python">print(math.pow(2, 200)) # 1.6069380442589903e+60
+print(math.pow(2, 200) &lt; math.inf)  # True
+</code></pre>
+<h2 id="reference">Reference</h2>
+<p><a href="https://www.youtube.com/watch?v=0K_eZGS5NsU">NeetCode: Python for Coding Interviews</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="string/" class="btn btn-neutral float-right" title="String">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="string/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-05-06 13:44:11.166297+00:00
+-->

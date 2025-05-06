@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Python Beginner/Intermediate Guide - python-for-leetcode</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Python Beginner/Intermediate Guide";
+        var mkdocs_page_input_path = "python-beginner-intermediate-guide.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> python-for-leetcode
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../string/">String</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Python Beginner/Intermediate Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#techniques">Techniques</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listdictset-comprehensions">list/dict/set... comprehensions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-booleans-as-values">using booleans as values</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lambda-functions">lambda functions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#enumerate">enumerate</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#zip">zip</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#all">all</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#any">any</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sorted">sorted</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bin">bin</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#map">map</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reduce">reduce</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filter">filter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reversed">reversed</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-structures">Data Structures</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dictionary">dictionary</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#counter">counter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set">set</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deque">deque</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#packages">Packages</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#bisect">bisect</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#heapq">heapq</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">Miscellaneous</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#if-not-_">If (not) _</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multiplying-stringslists">Multiplying strings/lists</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#in-line-ifelse-statements">In-line If/Else statements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lru_cache-cache">@lru_cache, @cache</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#floatinf-mathinf">float('inf'), math.inf</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../data-structure-complexities/">Data Structure Complexities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../time-complexity-estimation/">Time Complexity Estimation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../special-notes/">Special Notes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../concurrency/">Concurrency</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">python-for-leetcode</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Python Beginner/Intermediate Guide</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="python-beginnerintermediate-guide-to-functions-ds-techniques">Python Beginner/Intermediate Guide to Functions, DS, &amp; Techniques</h1>
+<h2 id="techniques">Techniques</h2>
+<h3 id="listdictset-comprehensions">list/dict/set... comprehensions</h3>
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+new_nums = [num for num in nums if num &gt;= 3]
+</code></pre>
+<pre><code class="language-python">dict = {'a': 1, 'b': 2, 'c': 3}
+new_dict = {key: value * 2 if value &gt;= 2 else value  for key, value in dict.items() }
+
+# values = [(expression_one) if (boolean) else (expression_two) for (item) in (iterable)]
+</code></pre>
+<h3 id="using-booleans-as-values">using booleans as values</h3>
+<p>Since python does not have strict types, you can use booleans as values in dictionaries or lists.</p>
+<pre><code class="language-python"># s1 = &quot;abcdef&quot;
+# s2 = &quot;abc123&quot;
+
+num_in_common = 0
+for i in range(len(s1)):
+    if s1[i] == s2[i]:
+        num_in_common += 1
+print(num_in_common)  # 3
+
+# or using `s1[i] == s2[i]` as a boolean value
+num_in_common = 0
+for i in range(len(s1)):
+    num_in_common += s1[i] == s2[i]
+print(num_in_common)  # 3
+</code></pre>
+<h3 id="lambda-functions">lambda functions</h3>
+<p>lambda function is a small anonymous function. It can take any number of arguments, but can only have one expression.</p>
+<pre><code class="language-python">def double(num):
+    return num * 2
+print(double(5))  # 10
+
+# or using a lambda function
+double = lambda num: num * 2
+
+print(double(5))  # 10
+</code></pre>
+<p>or using lambda function in sorting for point(x, y)</p>
+<pre><code class="language-python">points = [(1, 2), (3, 6), (5, 6), (3, 5), (7, 8)]
+points.sort(key=lambda point: (-point[0], point[1])) # sort by x desc, y asc
+print(points)  # [(7, 8), (5, 6), (3, 5), (3, 6), (1, 2)]
+</code></pre>
+<p>Other examples of functions which could take in a key argument include
+ <code>max</code>, <code>min</code>, many <a href="https://docs.python.org/3/library/heapq.html">heapq</a> methods,
+ <a href="https://docs.python.org/3/library/bisect.html">bisect</a> methods, etc.</p>
+<h2 id="functions">Functions</h2>
+<h3 id="enumerate"><code>enumerate</code></h3>
+<pre><code class="language-python">for i in range(len(nums)):
+    print(f&quot;{i}: {nums[i]}&quot;)
+
+# or using enumerate
+for i, num in enumerate(nums):
+    print(f&quot;{i}: {num}&quot;)
+</code></pre>
+<h3 id="zip"><code>zip</code></h3>
+<p><code>zip</code> is a built-in function that takes iterables (can be zero or more), aggregates them in a tuple, and returns it.</p>
+<pre><code class="language-python">list1 = [1, 2, 3, 4]
+list2 = [4, 5, 6]
+
+# using min length
+for i in range(min(len(list1), len(list2))):
+    print(f&quot;{list1[i]}: {list2[i]}&quot;) # 1: 4, 2: 5, 3: 6
+
+# or using zip
+for num1, num2 in zip(list1, list2):
+    print(f&quot;{num1}: {num2}&quot;) # 1: 4, 2: 5, 3: 6
+</code></pre>
+<h3 id="all"><code>all</code></h3>
+<p><code>all</code> returns True if all elements of the iterable are true (or if the iterable is empty).</p>
+<pre><code class="language-python"># using all
+for num in nums:
+    if num &gt;= value:
+        return False
+return True
+
+# or using all
+return all(num &lt; value for num in nums)
+</code></pre>
+<h3 id="any"><code>any</code></h3>
+<p><code>any</code> returns True if any element of the iterable is true. If the iterable is empty, return False.</p>
+<pre><code class="language-python"># using any
+for num in nums:
+    if num &gt;= value:
+        return True
+return False
+
+# or using any
+return any(num &gt;= value for num in nums)
+</code></pre>
+<h3 id="sorted"><code>sorted</code></h3>
+<p><code>sorted</code> is a built-in function that returns a new sorted list from the elements of any iterable.</p>
+<pre><code class="language-python">nums = [5, 2, 3, 1, 4]
+# using sorted
+sorted_nums = sorted(nums)  # [1, 2, 3, 4, 5]
+# or using sort
+nums.sort()  # [1, 2, 3, 4, 5]
+</code></pre>
+<p>The difference between <code>sorted(iterable)</code> and <code>sort()</code> is that <code>sorted()</code> returns a new list,
+while <code>sort()</code> modifies the list in place and returns <code>None</code>.</p>
+<h3 id="bin"><code>bin</code></h3>
+<p><code>bin</code> converts an integer number to a binary string prefixed with "0b".</p>
+<pre><code class="language-python">num = 5
+print(bin(num))  # 0b101
+
+# and converts it back to an integer using `int`
+print(int(bin(num), 2))  # 5
+</code></pre>
+<h3 id="map"><code>map</code></h3>
+<p><code>map(function, iterable)</code> applies the function to all items in the iterable and returns a map object (which is an iterator).</p>
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+# using map
+squared_nums = list(map(lambda x: x ** 2, nums))  # [1, 4, 9, 16, 25]
+</code></pre>
+<h3 id="reduce"><code>reduce</code></h3>
+<p><code>reduce(function, iterable)</code> applies the function cumulatively to the items of the iterable, from left to right, so as to reduce the iterable to a single value.</p>
+<pre><code class="language-python">from functools import reduce
+
+def add(x, y):
+    return x + y
+reduce (add, [1, 2, 3, 4, 5])  # 15
+# which calcuates as (((1 + 2) + 3) + 4) + 5
+</code></pre>
+<h3 id="filter"><code>filter</code></h3>
+<p><code>filter(function, iterable)</code> constructs an iterator from those elements of iterable for which function returns true.</p>
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+# using filter
+even_nums = list(filter(lambda x: x % 2 == 0, nums))  # [2, 4]
+</code></pre>
+<h3 id="reversed"><code>reversed</code></h3>
+<p><code>reversed</code> returns a reverse iterator. The original iterable is not modified.</p>
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+# using reversed
+reversed_nums = list(reversed(nums))  # [5, 4, 3, 2, 1]
+
+# or using sort
+nums.sort(reverse=True)  # [5, 4, 3, 2, 1]
+</code></pre>
+<h2 id="data-structures">Data Structures</h2>
+<h3 id="dictionary">dictionary</h3>
+<h3 id="counter">counter</h3>
+<pre><code class="language-python">from collections import Counter
+
+nums = [1, 2, 3, 4, 5, 1, 2, 3]
+counter = Counter(nums)
+print(counter)  # Counter({1: 2, 2: 2, 3: 2, 4: 1, 5: 1})
+</code></pre>
+<h3 id="set">set</h3>
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+
+# using set
+unique_nums = set(nums)  # {1, 2, 3, 4, 5}
+
+# or using list(dict.fromkeys)
+unique_nums = list(dict.fromkeys(nums))  # [1, 2, 3, 4, 5]
+</code></pre>
+<h3 id="deque">deque</h3>
+<h2 id="packages">Packages</h2>
+<h3 id="bisect">bisect</h3>
+<p>The module provides support for maintaining a list in sorted order without having to sort the list after each insertion.</p>
+<p>There are two main functions in the bisect module:</p>
+<ul>
+<li><code>bisect_left</code>: Find the index where to insert an element to keep the list sorted.</li>
+<li><code>bisect_right</code>: Find the index where to insert an element to keep the list sorted, but if the element is already present, it will be inserted to the right of the existing elements.</li>
+</ul>
+<h3 id="heapq">heapq</h3>
+<p>The module provides an implementation of the heap queue algorithm, also known as the priority queue algorithm.</p>
+<ul>
+<li><code>heapify</code>: Transform a list into a heap, in-place, in linear time.</li>
+<li><code>heappush</code>: Push the value item onto the heap, maintaining the heap invariant.</li>
+<li><code>heappop</code>: Pop and return the smallest item from the heap, maintaining the heap invariant.</li>
+</ul>
+<h2 id="miscellaneous">Miscellaneous</h2>
+<h3 id="if-not-_"><code>If (not) _</code></h3>
+<pre><code class="language-python"># check if list is empty
+if len(nums) == 0:
+    print(&quot;List is empty&quot;)
+
+# or
+if not nums:
+    print(&quot;List is empty&quot;)
+</code></pre>
+<h3 id="multiplying-stringslists">Multiplying <code>strings</code>/<code>lists</code></h3>
+<h3 id="in-line-ifelse-statements">In-line If/Else statements</h3>
+<h3 id="lru_cache-cache"><code>@lru_cache</code>, <code>@cache</code></h3>
+<p><code>@lru_cache</code> caches the result of function calls up to a certain size (<code>maxsize</code>).
+When the cache reaches this limit, the least recently used entries are discarded.
+Setting <code>maxisize=None</code> makes the cache unbounded.</p>
+<pre><code class="language-python">from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fibonacci(n):
+    if n &lt; 2:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(10))  # 55
+</code></pre>
+<p>With python 3.9+, you can use <code>@cache</code> instead of <code>@lru_cache(maxsize=None)</code>.</p>
+<pre><code class="language-python">from functools import cache
+
+@cache
+def fibonacci(n):
+    if n &lt; 2:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(10))  # 55
+</code></pre>
+<h3 id="floatinf-mathinf"><code>float('inf')</code>, <code>math.inf</code></h3>
+<p><code>float('inf')</code> is the same as <code>math.inf</code>, meaning positive infinity.
+<code>float('-inf')</code> is the same as <code>-math.inf</code>, meaning negative infinity.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../string/" class="btn btn-neutral float-left" title="String"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../data-structure-complexities/" class="btn btn-neutral float-right" title="Data Structure Complexities">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../string/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../data-structure-complexities/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

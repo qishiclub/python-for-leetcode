@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>String - python-for-leetcode</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "String";
+        var mkdocs_page_input_path = "string.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> python-for-leetcode
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">String</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#chain-string-operations">Chain string operations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#join-when-creating-a-single-string-for-list-elements">''.join() when creating a single string for list elements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#case-conversion">Case Conversion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#searching-and-counting">Searching and Counting</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#findsub-start-end">.find(sub[, start[, end]])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rfindsub-start-end">.rfind(sub[, start[, end]])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#countsub-start-end">.count(sub[, start[, end]])</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#trimming-and-padding">Trimming and Padding</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#stripchars">.strip([chars])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lstripchars">.lstrip([chars])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rstripchars">.rstrip([chars])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ljustwidth-fillchar">.ljust(width[, fillchar])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rjustwidth-fillchar">.rjust(width[, fillchar])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#zfillwidth-fillchar">.zfill(width[, fillchar])</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#replacement">Replacement</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#replaceold-new-count">.replace(old, new[, count])</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#splitting-and-joining">Splitting and Joining</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#splitsep-maxsplit">.split([sep[, maxsplit]])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rsplitsep-maxsplit">.rsplit([sep[, maxsplit]])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#joiniterable">join(iterable)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#testing-and-validation">Testing and Validation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#startswithprefix-start-end">.startswith(prefix[, start[, end]])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#endswithsuffix-start-end">.endswith(suffix[, start[, end]])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#isalnum">.isalnum()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#isalpha">.isalpha()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#isdigit">.isdigit()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#isnumeric">.isnumeric()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#isspace">.isspace()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#miscellaneous">MIscellaneous</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#lenstr">len(str)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ordchar-and-chrcodepoint">ord(char) and chr(codepoint)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#eval">eval()</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../python-beginner-intermediate-guide/">Python Beginner/Intermediate Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../data-structure-complexities/">Data Structure Complexities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../time-complexity-estimation/">Time Complexity Estimation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../special-notes/">Special Notes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../concurrency/">Concurrency</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">python-for-leetcode</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">String</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="string">String</h1>
+<h2 id="chain-string-operations">Chain string operations</h2>
+<pre><code class="language-python">info = &quot;  John Doe, 30, New York  &quot;
+formatted_info = info.strip()
+formatted_info = formatted_info.upper()
+formatted_info = formatted_info.split(',')
+print(formatted_info)  # ['JOHN DOE', ' 30', ' NEW YORK']
+
+# chained operations
+formatted_info = info.strip().upper().split(&quot;,&quot;)
+print(formatted_info)  # ['JOHN DOE', ' 30', ' NEW YORK']
+</code></pre>
+<h2 id="join-when-creating-a-single-string-for-list-elements"><code>''.join()</code> when creating a single string for <code>list</code> elements</h2>
+<pre><code class="language-python">list_of_strings = ['Hello', 'World']
+joined_string = ''.join(list_of_strings)
+
+# vs
+res = ''
+for string in list_of_strings:
+    res += string
+</code></pre>
+<h2 id="case-conversion">Case Conversion</h2>
+<ul>
+<li><code>lower()</code>, <code>'HELLO WORLD'.lower()  # 'hello world'</code></li>
+<li><code>upper()</code>, <code>'hello world'.upper()  # 'HELLO WORLD'</code></li>
+<li><code>title()</code>, <code>'hello world'.title()  # 'Hello World'</code></li>
+<li><code>capitalize()</code>, <code>'hello world'.capitalize()  # 'Hello world'</code></li>
+<li><code>swapcase()</code>, <code>'HeLLo'.swapcase()  # 'hEllO'</code></li>
+</ul>
+<h2 id="searching-and-counting">Searching and Counting</h2>
+<h3 id="findsub-start-end"><code>.find(sub[, start[, end]])</code></h3>
+<pre><code class="language-python">'hello world'.find('world')  # 6
+</code></pre>
+<h3 id="rfindsub-start-end"><code>.rfind(sub[, start[, end]])</code></h3>
+<pre><code class="language-python">'hello world world'.rfind('world')  # 12
+</code></pre>
+<h3 id="countsub-start-end"><code>.count(sub[, start[, end]])</code></h3>
+<pre><code class="language-python">'hello world'.count('o')  # 2
+</code></pre>
+<h2 id="trimming-and-padding">Trimming and Padding</h2>
+<h3 id="stripchars"><code>.strip([chars])</code></h3>
+<pre><code class="language-python">'  hello world  '.strip()  # 'hello world'
+</code></pre>
+<h3 id="lstripchars"><code>.lstrip([chars])</code></h3>
+<pre><code class="language-python">'  hello world  '.lstrip()  # 'hello world  '
+</code></pre>
+<p>lstrip <code>-</code></p>
+<pre><code class="language-python">'-42'.lstrip('-')  # '42'
+</code></pre>
+<h3 id="rstripchars"><code>.rstrip([chars])</code></h3>
+<pre><code class="language-python">'  hello world  '.rstrip()  # '  hello world'
+</code></pre>
+<h3 id="ljustwidth-fillchar"><code>.ljust(width[, fillchar])</code></h3>
+<pre><code class="language-python">'hello'.ljust(10, '-')  # 'hello-----'
+</code></pre>
+<h3 id="rjustwidth-fillchar"><code>.rjust(width[, fillchar])</code></h3>
+<pre><code class="language-python">'hello'.rjust(10, '-')  # '-----hello'
+</code></pre>
+<h3 id="zfillwidth-fillchar"><code>.zfill(width[, fillchar])</code></h3>
+<pre><code class="language-python">'42'.zfill(5)  # '00042'
+</code></pre>
+<h2 id="replacement">Replacement</h2>
+<h3 id="replaceold-new-count"><code>.replace(old, new[, count])</code></h3>
+<pre><code class="language-python">'hello world'.replace('world', 'Python')  # 'hello Python'
+</code></pre>
+<h2 id="splitting-and-joining">Splitting and Joining</h2>
+<h3 id="splitsep-maxsplit"><code>.split([sep[, maxsplit]])</code></h3>
+<pre><code class="language-python">'hello world'.split()  # ['hello', 'world']
+</code></pre>
+<h3 id="rsplitsep-maxsplit"><code>.rsplit([sep[, maxsplit]])</code></h3>
+<pre><code class="language-python">'one,two,three'.rsplit(',', 1)  # ['one,two', 'three']
+</code></pre>
+<h3 id="joiniterable"><code>join(iterable)</code></h3>
+<pre><code class="language-python">'-'.join(['hello', 'world'])  # 'hello-world'
+</code></pre>
+<h2 id="testing-and-validation">Testing and Validation</h2>
+<h3 id="startswithprefix-start-end"><code>.startswith(prefix[, start[, end]])</code></h3>
+<pre><code class="language-python">'hello world'.startswith('hello')  # True
+</code></pre>
+<h3 id="endswithsuffix-start-end"><code>.endswith(suffix[, start[, end]])</code></h3>
+<pre><code class="language-python">'hello world'.endswith('world')  # True
+</code></pre>
+<h3 id="isalnum"><code>.isalnum()</code></h3>
+<pre><code class="language-python">'hello123'.isalnum()  # True
+</code></pre>
+<h3 id="isalpha"><code>.isalpha()</code></h3>
+<pre><code class="language-python">'hello'.isalpha()  # True
+</code></pre>
+<h3 id="isdigit"><code>.isdigit()</code></h3>
+<pre><code class="language-python">'123'.isdigit()  # True
+</code></pre>
+<h3 id="isnumeric"><code>.isnumeric()</code></h3>
+<pre><code class="language-python">'⅕'.isnumeric()  # True
+</code></pre>
+<h3 id="isspace"><code>.isspace()</code></h3>
+<pre><code class="language-python">'   '.isspace()  # True
+</code></pre>
+<h2 id="miscellaneous">MIscellaneous</h2>
+<h3 id="lenstr"><code>len(str)</code></h3>
+<pre><code class="language-python">len('hello')  # 5
+</code></pre>
+<h3 id="ordchar-and-chrcodepoint"><code>ord(char)</code> and <code>chr(codepoint)</code></h3>
+<pre><code class="language-python">ord('A')  # 65
+chr(65)  # 'A'
+</code></pre>
+<h3 id="eval"><code>eval()</code></h3>
+<p>eval() evaluates a string as a Python expression and returns the result. It can be dangerous if used with untrusted input.</p>
+<pre><code class="language-python">result = eval('2 + 3 * 4')  # 14
+result = eval('x + y', {'x': 1, 'y': 2})  # 3
+result = eval('x + 2'.replace('x', '2'))  # 4
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../python-beginner-intermediate-guide/" class="btn btn-neutral float-right" title="Python Beginner/Intermediate Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../python-beginner-intermediate-guide/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

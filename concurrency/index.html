@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Concurrency - python-for-leetcode</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Concurrency";
+        var mkdocs_page_input_path = "concurrency.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> python-for-leetcode
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../string/">String</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../python-beginner-intermediate-guide/">Python Beginner/Intermediate Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../data-structure-complexities/">Data Structure Complexities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../time-complexity-estimation/">Time Complexity Estimation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../special-notes/">Special Notes</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Concurrency</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-concurrency">What is concurrency?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#threading">Threading</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-threadinglock-for-mutual-exclusion">Using threading.Lock for mutual exclusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#threadingrlock-for-reentrant-locking">threading.RLock for Reentrant Locking</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#limiting-access-with-semaphore">Limiting Access With Semaphore</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-synchronization-primitives-for-communication-and-coordination">Using Synchronization Primitives for communication and coordination</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#events-for-signaling">Events for Signaling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conditions-for-conditional-waiting">Conditions for Conditional Waiting</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#barriers-for-coordination">Barriers for Coordination</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">python-for-leetcode</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Concurrency</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="concurrency">Concurrency</h1>
+<h2 id="what-is-concurrency">What is concurrency?</h2>
+<p>Concurrency is the ability of a program to execute multiple tasks simultaneously. It allows for better resource utilization and can improve the performance of applications, especially those that are I/O-bound or require parallel processing.</p>
+<p>There are mainly three types of concurrency in Python:</p>
+<ol>
+<li><strong>Threading</strong>: Using threads to run multiple tasks concurrently within a single process. Suitable for I/O-bound tasks.</li>
+<li><strong>Multiprocessing</strong>: Using multiple processes to run tasks concurrently. Suitable for CPU-bound tasks.</li>
+<li><strong>Asyncio</strong>: Using asynchronous programming to run tasks concurrently. Suitable for I/O-bound tasks.</li>
+</ol>
+<h2 id="threading">Threading</h2>
+<p>basic threading example:</p>
+<pre><code class="language-python">import threading
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+def threaded_function():
+    for number in range(3):
+        print(f&quot;Printing from {threading.current_thread().name}. {number=}&quot;)
+        time.sleep(0.1)
+
+with ThreadPoolExecutor(max_workers=4, thread_name_prefix=&quot;Worker&quot;) as executor:
+    for _ in range(4):
+        executor.submit(threaded_function)
+
+# Output:
+# Printing from Worker_0. number=0
+# Printing from Worker_1. number=0
+# Printing from Worker_2. number=0
+# Printing from Worker_3. number=0
+# Printing from Worker_0. number=1
+# Printing from Worker_2. number=1
+# Printing from Worker_1. number=1
+# Printing from Worker_3. number=1
+# Printing from Worker_0. number=2
+# Printing from Worker_2. number=2
+# Printing from Worker_1. number=2
+# Printing from Worker_3. number=2
+</code></pre>
+<p>Thread safety issues occur because of two factors:</p>
+<ul>
+<li><strong>Shared state</strong>: When multiple threads access and modify the same data simultaneously, it can lead to race conditions, causing inconsistent or unpredictable results.</li>
+<li><strong>Non-atomic operations</strong>: Operations that aren’t atomic (indivisible) can be interrupted midway by other threads, resulting in partial updates or corrupted data.</li>
+</ul>
+<h2 id="using-threadinglock-for-mutual-exclusion">Using <code>threading.Lock</code> for mutual exclusion</h2>
+<pre><code class="language-python">import threading
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+class BankAccount:
+    def __init__(self, balance=0):
+        self.balance = balance
+        self.account_lock = threading.Lock()
+
+    def withdraw(self, amount):
+        with self.account_lock:
+            if self.balance &gt;= amount:
+                new_balance = self.balance - amount
+                print(f&quot;Withdrawing {amount}...&quot;)
+                time.sleep(0.1)  # Simulate a delay
+                self.balance = new_balance
+            else:
+                raise ValueError(&quot;Insufficient balance&quot;)
+
+    def deposit(self, amount):
+        with self.account_lock:
+            new_balance = self.balance + amount
+            print(f&quot;Depositing {amount}...&quot;)
+            time.sleep(0.1)  # Simulate a delay
+            self.balance = new_balance
+
+account = BankAccount(1000)
+
+with ThreadPoolExecutor(max_workers=3) as executor:
+    executor.submit(account.withdraw, 700)
+    executor.submit(account.deposit, 1000)
+    executor.submit(account.withdraw, 300)
+
+print(f&quot;Final account balance: {account.balance}&quot;)
+
+# Output:
+Withdrawing 700...
+Depositing 1000...
+Withdrawing 300...
+Final account balance: 1000
+</code></pre>
+<h2 id="threadingrlock-for-reentrant-locking"><code>threading.RLock</code> for Reentrant Locking</h2>
+<p>Reentrant locks (<code>threading.RLock</code>) allow a thread to acquire the same lock multiple times without causing a deadlock. This is useful when a thread needs to call a function that requires the same lock it already holds.</p>
+<p>Key points:
+- <strong>Reentrant</strong>: A thread can acquire the lock multiple times without blocking itself.
+- <strong>Release</strong>: Lock if fully released the same number of times it was acquired.</p>
+<pre><code class="language-python">import threading
+
+rlock = threading.RLock()
+
+def inner_task():
+    with rlock:
+        print(&quot;Inner task acquired lock.&quot;)
+
+def outer_task():
+    with rlock:
+        print(&quot;Outer task acquired lock.&quot;)
+        inner_task()
+
+thread = threading.Thread(target=outer_task)
+thread.start()
+thread.join()
+</code></pre>
+<h2 id="limiting-access-with-semaphore">Limiting Access With <code>Semaphore</code></h2>
+<p><code>Semaphore</code> is a synchronization primitive that allows a limited number of threads to access a shared resource concurrently. It's especially useful in secnarios like:</p>
+<ul>
+<li>Limiting the number of connections to a server</li>
+<li>Controlling access to limited resources (e.g., database connections, file handles)</li>
+</ul>
+<p>Key points:</p>
+<ul>
+<li>Initialized with a positive integer, representing available permits.</li>
+<li><code>.acquire()</code> decrements the semaphore count; threads wait if the count is zero.</li>
+<li><code>.release()</code> increments the semaphore count, signaling that a permit is available.</li>
+</ul>
+<pre><code class="language-python">import threading
+import time
+
+semaphore = threading.Semaphore(2)  # max 2 threads simultaneously
+
+def worker(worker_id):
+    print(f&quot;Worker {worker_id} waiting...&quot;)
+    with semaphore:
+        print(f&quot;Worker {worker_id} working...&quot;)
+        time.sleep(2)
+        print(f&quot;Worker {worker_id} done.&quot;)
+
+threads = [threading.Thread(target=worker, args=(i,)) for i in range(4)]
+
+for t in threads:
+    t.start()
+for t in threads:
+    t.join()
+
+# Output:
+# Worker 0 waiting...
+# Worker 0 working...
+# Worker 1 waiting...
+# Worker 1 working...
+# Worker 2 waiting...
+# Worker 3 waiting...
+# Worker 0 done.
+# Worker 2 working...
+# Worker 1 done.
+# Worker 3 working...
+# Worker 2 done.
+# Worker 3 done.
+</code></pre>
+<h2 id="using-synchronization-primitives-for-communication-and-coordination">Using Synchronization Primitives for communication and coordination</h2>
+<h3 id="events-for-signaling">Events for Signaling</h3>
+<pre><code class="language-python">import threading
+import time
+
+event = threading.Event()
+
+def waiter():
+    print(&quot;Waiter thread is waiting for event...&quot;)
+    event.wait()
+    print(&quot;Waiter thread received event!&quot;)
+
+def notifier():
+    print(&quot;Notifier thread sleeping...&quot;)
+    time.sleep(2)
+    event.set()
+    print(&quot;Notifier thread set event.&quot;)
+
+t1 = threading.Thread(target=waiter)
+t2 = threading.Thread(target=notifier)
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+# Output:
+# Waiter thread is waiting for event...
+# Notifier thread sleeping...
+# Notifier thread set event.
+# Waiter thread received event!
+</code></pre>
+<h3 id="conditions-for-conditional-waiting">Conditions for Conditional Waiting</h3>
+<p>A <code>Condition</code> (<code>threading.Condition</code>) enables threads to pause execution and wait until cetain conditions are met.
+It's ideal for producer-consumer scenarios, where one or more threads produce data and others consume it.</p>
+<p>Key points:</p>
+<ul>
+<li>Threads call <code>.wait()</code> to block until notified.</li>
+<li>Use <code>.notify()</code> or <code>.notify_all()</code> to wake up waiting threads (<code>notify()</code> for one thread, <code>notify_all()</code> for all).</li>
+</ul>
+<pre><code class="language-python">import threading
+import time
+
+condition = threading.Condition()
+queue = []
+
+def consumer():
+    with condition:
+        print(&quot;Consumer waiting for item...&quot;)
+        while not queue:
+            condition.wait()
+        item = queue.pop(0)
+        print(f&quot;Consumer got item: {item}&quot;)
+
+def producer():
+    with condition:
+        print(&quot;Producer creating item...&quot;)
+        queue.append(&quot;data&quot;)
+        condition.notify()
+
+c = threading.Thread(target=consumer)
+p = threading.Thread(target=producer)
+
+c.start()
+time.sleep(1)  # ensure consumer waits first
+p.start()
+
+c.join()
+p.join()
+
+# Output:
+# Consumer waiting for item...
+# Producer creating item...
+# Consumer got item: data
+</code></pre>
+<h3 id="barriers-for-coordination">Barriers for Coordination</h3>
+<pre><code class="language-python">Barrier(parties, action=None, timeout=None)
+</code></pre>
+<pre><code class="language-python">import threading
+import time
+
+# Barrier for synchronizing exactly 3 threads
+barrier = threading.Barrier(3)
+
+def worker(worker_id):
+    print(f&quot;Worker {worker_id}: preparing&quot;)
+    time.sleep(worker_id)  # simulate varying preparation times
+    print(f&quot;Worker {worker_id}: ready and waiting at barrier&quot;)
+
+    barrier.wait()  # threads pause here until all 3 have called wait()
+
+    print(f&quot;Worker {worker_id}: passed the barrier, continuing&quot;)
+
+# Create exactly 3 threads
+threads = [
+    threading.Thread(target=worker, args=(i,))
+    for i in range(3)
+]
+
+for t in threads:
+    t.start()
+
+for t in threads:
+    t.join()
+
+print(&quot;All threads have passed the barrier.&quot;)
+
+# Output:
+# Worker 0: preparing
+# Worker 1: preparing
+# Worker 2: preparing
+# Worker 0: ready and waiting at barrier
+# Worker 1: ready and waiting at barrier
+# Worker 2: ready and waiting at barrier
+# Worker 2: passed the barrier, continuing
+# Worker 0: passed the barrier, continuing
+# Worker 1: passed the barrier, continuing
+# All threads have passed the barrier.
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Primitive</th>
+<th>Use-case</th>
+<th>Key operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RLock</td>
+<td>Reentrant locking</td>
+<td><code>acquire()</code>, <code>release()</code></td>
+</tr>
+<tr>
+<td>Semaphore</td>
+<td>Limit concurrent access</td>
+<td><code>acquire()</code>, <code>release()</code></td>
+</tr>
+<tr>
+<td>Event</td>
+<td>Signaling between threads</td>
+<td><code>set()</code>, <code>clear()</code>, <code>wait()</code></td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>Conditional waiting</td>
+<td><code>wait()</code>, <code>notify()</code>, <code>notify_all()</code></td>
+</tr>
+<tr>
+<td>Barrier</td>
+<td>Coordination among threads</td>
+<td><code>wait()</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Identify race conditions in code</li>
+<li>Use <code>Lock</code> and <code>RLock</code> to protect shared resources</li>
+<li>Use <code>Semaphore</code> to limit concurrent access to resources</li>
+<li>Leverage <code>Event</code> for signaling between threads</li>
+<li>Use <code>Condition</code> for complex thread communication</li>
+<li>Use <code>Barrier</code> for coordinating multiple threads</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../special-notes/" class="btn btn-neutral float-left" title="Special Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../special-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

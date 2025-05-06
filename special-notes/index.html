@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Special Notes - python-for-leetcode</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Special Notes";
+        var mkdocs_page_input_path = "special-notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> python-for-leetcode
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../string/">String</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../python-beginner-intermediate-guide/">Python Beginner/Intermediate Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../data-structure-complexities/">Data Structure Complexities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../time-complexity-estimation/">Time Complexity Estimation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Special Notes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#python-variable-scope">Python variable scope</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-of-nonlocal-keyword">Example of nonlocal keyword</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-of-global-keyword">Example of global keyword</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shallow-copy-vs-deep-copy">Shallow copy vs Deep copy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#default-arguments">Default Arguments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sorting">Sorting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tuple-vs-list-in-leetcode">Tuple vs List in leetcode</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#args-and-kwargs">*args and **kwargs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-zen-of-python-by-tim-peters">The Zen of Python, by Tim Peters</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../concurrency/">Concurrency</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">python-for-leetcode</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Special Notes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="special-notes">Special Notes</h1>
+<h2 id="python-variable-scope">Python variable scope</h2>
+<p><code>nonlocal</code> and <code>global</code> keywords are used to declare variables in a different scope.</p>
+<ul>
+<li><code>nonlocal</code> is used to declare a variable in the nearest enclosing scope that is not global.</li>
+<li><code>global</code> is used to declare a variable in the global scope (which is module level).</li>
+</ul>
+<h3 id="example-of-nonlocal-keyword">Example of <code>nonlocal</code> keyword</h3>
+<pre><code class="language-python">def outer_function():
+    x = 10  # Enclosing scope variable
+
+    def inner_function():
+        nonlocal x  # Declare x as nonlocal
+        x += 5
+        print(&quot;Inner function:&quot;, x)
+
+    inner_function()
+    print(&quot;Outer function:&quot;, x)
+outer_function()
+</code></pre>
+<p>Output:</p>
+<pre><code>Inner function: 15
+Outer function: 15
+</code></pre>
+<h3 id="example-of-global-keyword">Example of <code>global</code> keyword</h3>
+<pre><code class="language-python">x = 10  # Global variable
+def my_function():
+    global x  # Declare x as global
+    x += 5
+    print(&quot;Inside function:&quot;, x)
+my_function()
+print(&quot;Outside function:&quot;, x)
+</code></pre>
+<p>Output:</p>
+<pre><code>Inside function: 15
+Outside function: 15
+</code></pre>
+<h2 id="shallow-copy-vs-deep-copy">Shallow copy vs Deep copy</h2>
+<ul>
+<li><strong>Shallow copy</strong>: Creates a new object, but inserts references into it to the objects found in the original. Changes made to mutable objects in the shallow copy will affect the original object.</li>
+<li><strong>Deep copy</strong>: Creates a new object and recursively adds copies of nested objects found in the original. Changes made to mutable objects in the deep copy will not affect the original object.</li>
+<li>Use <code>copy.copy()</code> for shallow copy and <code>copy.deepcopy()</code> for deep copy.</li>
+</ul>
+<pre><code class="language-python">import copy
+
+original = [1, 2, [3, 4]]
+shallow_copied = copy.copy(original)  # this is the same as shallow_copied = original[:] or shallow_copied = original.copy()
+deep_copied = copy.deepcopy(original)
+
+shallow_copied[2][0] = 99
+deep_copied[2][0] = 88
+
+print(original)  # [1, 2, [99, 4]]
+print(shallow_copied)  # [1, 2, [99, 4]]
+print(deep_copied)  # [1, 2, [88, 4]]
+</code></pre>
+<h2 id="default-arguments">Default Arguments</h2>
+<ul>
+<li>Default arguments are evaluated once when the function is defined, not each time the function is called.</li>
+<li>If you use mutable default arguments (like lists or dictionaries), they will retain changes across function calls.</li>
+<li>To avoid this, use <code>None</code> as the default value and initialize the mutable object inside the function.</li>
+</ul>
+<pre><code class="language-python">def append_to_list(value, my_list=None):
+    if my_list is None:  # NOTE, you need to directly compare with None
+        my_list = []
+    my_list.append(value)
+    return my_list
+print(append_to_list(1))  # [1]
+print(append_to_list(2))  # [2]
+print(append_to_list(3, [4, 5]))  # [4, 5, 3]
+</code></pre>
+<pre><code class="language-python">def append_to_list(value, my_list=[]):
+    my_list.append(value)
+    return my_list
+print(append_to_list(1))  # [1]
+print(append_to_list(2))  # [1, 2]
+print(append_to_list(3, [4, 5]))  # [4, 5, 3]
+</code></pre>
+<h2 id="sorting">Sorting</h2>
+<ul>
+<li>Python's built-in sorting (sorted() and list.sort()) is a stable sort, and sorts lexicographically by default (using unicode value via <code>ord()</code>).</li>
+<li>For tuple sorting, the first element is compared first, then the second, and so on.</li>
+</ul>
+<pre><code class="language-python"># Sorting a list of tuples
+data = [(1, 'apple'), (2, 'banana'), (1, 'orange')]
+sorted_data = sorted(data, key=lambda x: (x[0], x[1]))
+print(sorted_data)  # [(1, 'apple'), (1, 'orange'), (2, 'banana')]
+</code></pre>
+<h2 id="tuple-vs-list-in-leetcode">Tuple vs List in leetcode</h2>
+<p>Tuples:</p>
+<ul>
+<li>Immutable, cannot be changed after creation.</li>
+<li>Hashable, can be used as dictionary keys.</li>
+<li>Faster than lists for iteration and access.</li>
+<li>Typically represent fixed collections of heterogeneous data or pairs, coordinates, etc.</li>
+</ul>
+<p>Lists:</p>
+<ul>
+<li>Mutable, can be changed after creation.</li>
+<li>Not hashable, cannot be used as dictionary keys.</li>
+<li>Slower than tuples for iteration and access.</li>
+<li>Suitable for homogeneous sequences, dynamic-length collections, or when frequent modifications are needed.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Use Tuple</th>
+<th>Use List</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coordinate, (row, col) pairs</td>
+<td>When frequent insertion/deletion needed</td>
+</tr>
+<tr>
+<td>Keys in dicts/sets</td>
+<td>Temporary collections, stacks, queues</td>
+</tr>
+<tr>
+<td>Fixed-size states (memoization keys)</td>
+<td>Mutable states, paths, results</td>
+</tr>
+</tbody>
+</table>
+<h2 id="args-and-kwargs"><code>*args</code> and <code>**kwargs</code></h2>
+<ul>
+<li><code>*args</code> allows you to pass a variable number of non-keyword arguments to a function.</li>
+<li><code>**kwargs</code> allows you to pass a variable number of keyword arguments to a function.</li>
+<li>They are often used in function definitions to allow for flexible argument passing.</li>
+</ul>
+<pre><code class="language-python">def my_function(*args, **kwargs):
+    print(&quot;Positional arguments:&quot;, args)
+    print(&quot;Keyword arguments:&quot;, kwargs)
+my_function(1, 2, 3, a=4, b=5)
+
+# Output:
+# Positional arguments: (1, 2, 3)
+# Keyword arguments: {'a': 4, 'b': 5}
+</code></pre>
+<pre><code class="language-python">def my_function(a, b, *args, **kwargs):
+    print(&quot;a:&quot;, a)
+    print(&quot;b:&quot;, b)
+    print(&quot;Positional arguments:&quot;, args)
+    print(&quot;Keyword arguments:&quot;, kwargs)
+my_function(1, 2, 3, 4, 5, x=6, y=7)
+
+# Output:
+# a: 1
+# b: 2
+# Positional arguments: (3, 4, 5)
+# Keyword arguments: {'x': 6, 'y': 7}
+</code></pre>
+<h2 id="the-zen-of-python-by-tim-peters">The Zen of Python, by Tim Peters</h2>
+<pre><code class="language-python">&gt;&gt;&gt; import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../time-complexity-estimation/" class="btn btn-neutral float-left" title="Time Complexity Estimation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../concurrency/" class="btn btn-neutral float-right" title="Concurrency">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../time-complexity-estimation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../concurrency/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
